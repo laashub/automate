@@ -166,7 +166,7 @@ func (es Backend) getAggSuggestions(term string, text string, filters map[string
 		for _, reportBucket := range aggResult.Buckets {
 			distinct, _ := reportBucket.Aggregations.TopHits("distinct")
 			for _, hit := range distinct.Hits.Hits {
-				oneSugg := backend.Suggestion{Text: string(reportBucket.KeyNumber), Score: float32(*hit.Score)}
+				oneSugg := backend.Suggestion{Text: fmt.Sprintf("%v", reportBucket.Key), Score: float32(*hit.Score)}
 				suggs = append(suggs, oneSugg)
 			}
 		}
@@ -247,7 +247,7 @@ func (es Backend) getArrayAggSuggestions(term string, text string, filters map[s
 	suggs := make([]string, 0)
 	if aggResult != nil {
 		for _, bucket := range aggResult.Buckets {
-			suggs = append(suggs, string(bucket.KeyNumber))
+			suggs = append(suggs, fmt.Sprintf("%v", bucket.Key))
 		}
 	}
 
