@@ -156,7 +156,7 @@ func deleteIndex(client *elastic.Client, indexName string) (bool, bool, error) {
 
 	deletedResponse, err := client.DeleteIndex().Index([]string{indexName}).Do(context.Background())
 	if err != nil {
-		logrus.Errorf("Error deleting index %s, error %s", indexName, err.Error())
+		return false, indexExists, errors.Wrap(err, fmt.Sprintf("Error deleting index %s", indexName))
 	}
 
 	return deletedResponse.Acknowledged, indexExists, err
