@@ -31,7 +31,7 @@ pkg_binds_optional=(
 )
 inspec_release="chef/inspec/4.18.51/20191211220937"
 pkg_deps=(
-  core/bash
+  core/bash/4.4.19/20190115012619 # temp pin
   core/grpcurl              # Used in habitat/hooks/health_check
   core/jq-static            # Used in habitat/hooks/health_check
   "${local_platform_tools_origin:-chef}/automate-platform-tools"
