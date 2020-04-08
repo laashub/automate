@@ -8,29 +8,42 @@ pkg_description="Chef Automate Workflow server"
 pkg_upstream_url="https://www.chef.io/automate"
 
 pkg_deps=(
-  core/bash
-  core/coreutils
-  core/curl
-  core/erlang18
-  core/gawk
-  core/gcc-libs
-  core/grep
-  core/git
-  core/glibc
-  core/openssh
-  core/tzdata
-  core/jq-static
-  chef/mlsa
+  # The following core packages are pinned to compatible with the current versions
+  # of chef/mlsa and chef/automate-workflow-ctl. When chef/automate-workflow-ctl
+  # and chef/mlsa have been rebuilt with new core plan these pins can be removed.
+  chef/mlsa/1.0.1/20190129204344
+  core/bash/4.4.19/20190115012619
+  core/coreutils/8.30/20190115012313
+  core/curl/7.68.0/20200309012427
+  core/erlang18/18.3/20190305214350
+  core/gawk/4.2.1/20190115012752
+  core/gcc-libs/8.2.0/20190115011926
+  core/git/2.25.1/20200309023931
+  core/glibc/2.27/20190115002733
+  core/grep/3.1/20190115012541
+  core/jq-static/1.6/20190703002933
+  core/openssh/7.5p1/20190305213650
+  core/tzdata/2018g/20190115213410
 
   # NOTE(ssd) 2019-04-03: Any in-repo dependencies added here MUST be
   # shared with automate-workflow-ctl until we either combine these
   # packages or remove all shared dependencies between the two
   # packages.
-  ${local_platform_tools_origin:-chef}/automate-platform-tools
 
-  core/bundler
-  core/ruby
-  "${vendor_origin}/automate-workflow-ctl"
+  # This is pinned to a compatible version of automate-platform-tools that the
+  # below pinned version of chef/automate-workflow-ctl expects.
+  ${local_platform_tools_origin:-chef}/automate-platform-tools/0.1.0/20200310194547
+
+  # The following are pinned to be compatible the version of core/busybox-static
+  # that is required by chef/mlsa and the version required by the above pinned
+  # automate-platform-tools. When chef/mlsa and chef/automate-platform-tools
+  # are rebuilt with the updated core-plans these pins can be removed.
+  core/bundler/1.17.3/20200124171459
+  core/ruby/2.5.7/20200124164126
+  # This is pinned to a version of chef/automate-workflow-ctl is compatible with the
+  # previously pinned deps. When chef/automate-workflow-ctl is and chef/mlsa
+  # have been rebuilt with the updated core-plans this pin can be removed.
+  "${vendor_origin}/automate-workflow-ctl/1.0.0/20200310194746"
 )
 
 pkg_build_deps=(
