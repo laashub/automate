@@ -5,10 +5,11 @@ pkg_maintainer="Chef Software Inc. <support@chef.io>"
 pkg_license=('Chef-MLSA')
 
 pkg_deps=(
-    # pinned to a version that is compatible with tthe current openresty-noroot package
-    # required by automate-workflow-nginx
-    core/coreutils/8.30/20190115012313
     chef/mlsa
+    # corfe/coreutils is pinned to a version that is compatible with the currently
+    # pinned version of chef/openresty-noroot package required by automate-workflow-nginx.
+    # When that pin is updated this pin will need to be removed.
+    core/coreutils/8.30/20190115012313
 )
 pkg_build_deps=(
   core/make

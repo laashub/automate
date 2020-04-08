@@ -31,15 +31,16 @@ pkg_binds_optional=(
 )
 inspec_release="chef/inspec/4.18.51/20191211220937"
 pkg_deps=(
-  core/bash/4.4.19/20190115012619 # temp pin
+  chef/mlsa
   core/grpcurl              # Used in habitat/hooks/health_check
   core/jq-static            # Used in habitat/hooks/health_check
   "${local_platform_tools_origin:-chef}/automate-platform-tools"
   # WARNING: Update with care. The chef/inspec is managed with Expeditor.
-
   # See .expeditor/update-inspec-version.sh for details
   "${inspec_release}"
-  chef/mlsa
+  # core/bash is pinned to the currently pinned version of chef/inspec. When that
+  # pin is updated this pin will need to be removed.
+  core/bash/4.4.19/20190115012619
 )
 
 if [[ -n "$AUTOMATE_OSS_BUILD" ]]; then

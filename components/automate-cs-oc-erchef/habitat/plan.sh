@@ -12,7 +12,9 @@ pkg_maintainer="Chef Software Inc. <support@chef.io>"
 pkg_license=("Chef-MLSA")
 pkg_upstream_url="https://www.chef.io/automate"
 pkg_deps=(
-  core/runit/2.1.2/20190117215735 # pinned to version required by the pinned oc_erchef
+  # runit is pinned to version required by the pinned version of chef/oc_erchef.
+  # When the pin is updated this pin should be removed.
+  core/runit/2.1.2/20190117215735
   chef/mlsa
   "${local_platform_tools_origin:-chef}/automate-platform-tools"
   # WARNING: Version pin managed by .expeditor/update_chef_server.sh
