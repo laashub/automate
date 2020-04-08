@@ -11,8 +11,10 @@ pkg_license=("Chef-MLSA")
 pkg_upstream_url="https://www.chef.io/automate"
 pkg_svc_user="root"
 pkg_deps=(
-  core/bash
   chef/mlsa
+  # core/bash is pinned to a version that is compatible with the pinned version
+  # of habitat/builder-api-proxy. When that pin is updated this pin should be removed.
+  core/bash/4.4.19/20190115012619
   "${local_platform_tools_origin:-chef}/automate-platform-tools"
   # We need to pin here to get a build from unstable
   "habitat/builder-api-proxy/8796/20200309134228"
