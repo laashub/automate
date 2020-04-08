@@ -5,7 +5,9 @@ pkg_maintainer="Chef Software Inc. <support@chef.io>"
 pkg_license=('Chef-MLSA')
 
 pkg_deps=(
-    core/coreutils
+    # pinned to a version that is compatible with tthe current openresty-noroot package
+    # required by automate-workflow-nginx
+    core/coreutils/8.30/20190115012313
     chef/mlsa
 )
 pkg_build_deps=(
