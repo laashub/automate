@@ -322,9 +322,9 @@ unless no_pin_hab
   # components/automate-deployment/habitat/plan.sh
   #
   # WARNING: These pins are managed by .expeditor/update_habitat.sh.
-  pins["hab"]          = { "origin" => "core", "name" => "hab",          "version" => "0.90.6", "release" => "20191112141314"}
-  pins["hab-sup"]      = { "origin" => "core", "name" => "hab-sup",      "version" => "0.90.6", "release" => "20191112144831"}
-  pins["hab-launcher"] = { "origin" => "core", "name" => "hab-launcher", "version" => "12605",  "release" => "20191112144831"}
+  pins["hab"]          = { "origin" => "core", "name" => "hab",          "version" => "1.5.86", "release" => "20200408002109"}
+  pins["hab-sup"]      = { "origin" => "core", "name" => "hab-sup",      "version" => "1.5.86", "release" => "20200408005527"}
+  pins["hab-launcher"] = { "origin" => "core", "name" => "hab-launcher", "version" => "13553",  "release" => "20200408005537"}
 end
 
 # CONFIGURATION
