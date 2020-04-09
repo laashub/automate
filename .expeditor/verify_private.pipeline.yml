@@ -502,7 +502,7 @@ steps:
   - label: "airgap a1migration"
     command:
       - integration/run_test integration/tests/airgap_a1migration.sh
-    timeout_in_minutes: 20
+    timeout_in_minutes: 25
     expeditor:
       executor:
         linux:
